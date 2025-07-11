@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Garden To-Do Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Rubik+Glitch&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container mx-auto px-4 py-8 relative z-10">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">🌱 Plant Garden To-Do</h1>
+            <p class="text-secondary text-lg">Complete tasks to grow your virtual garden!</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <!-- Plant Garden Section -->
+            <div class="glass rounded-2xl p-8 text-center">
+                <h2 class="text-2xl font-bold text-primary mb-6 relative z-10">Your Garden</h2>
+                
+                <!-- Plant Display -->
+                <div class="plant-container mb-6">
+                    <div id="plantDisplay" class="plant-stage mb-4">🌱</div>
+                    <div id="plantStatus" class="text-primary text-lg mb-4 relative z-10 font-semibold">Young Sprout</div>
+                    
+                    <!-- Harvest Counter -->
+                    <div id="harvestCounter" class="text-yellow-600 font-bold text-lg mb-4 relative z-10" style="display: none;">
+                        🏆 Harvests: <span id="harvestCount">0</span>
+                    </div>
+                    
+                    <!-- Water Level Progress -->
+                    <div class="w-full bg-gray-200/50 rounded-full h-4 mb-4 relative z-10">
+                        <div id="waterProgress" class="progress-bar bg-gradient-to-r from-blue-400 to-green-400 h-4 rounded-full" style="width: 0%"></div>
+                    </div>
+                    <div class="text-secondary text-sm relative z-10">
+                        <span id="currentWater">0</span> / <span id="requiredWater">5</span> tasks completed
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="grid grid-cols-2 gap-4 text-center">
+                    <div class="glass-dark rounded-lg p-4">
+                        <div class="text-2xl font-bold text-primary relative z-10" id="totalTasks">0</div>
+                        <div class="text-secondary text-sm relative z-10">Total Tasks</div>
+                    </div>
+                    <div class="glass-dark rounded-lg p-4">
+                        <div class="text-2xl font-bold text-green-600 relative z-10" id="completedTasks">0</div>
+                        <div class="text-secondary text-sm relative z-10">Completed</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- To-Do List Section -->
+            <div class="glass rounded-2xl p-8">
+                <h2 class="text-2xl font-bold text-primary mb-6 relative z-10">Tasks</h2>
+                
+                <!-- Add Task Form -->
+                <div class="mb-6">
+                    <div class="flex gap-3 mb-4">
+                        <input 
+                            type="text" 
+                            id="taskInput" 
+                            placeholder="Add a new task..."
+                            class="flex-1 px-4 py-3 rounded-lg input-field placeholder-gray-500 focus:outline-none relative z-10"
+                        >
+                        <input 
+                            type="date" 
+                            id="dateInput"
+                            class="px-4 py-3 rounded-lg input-field focus:outline-none relative z-10"
+                        >
+                    </div>
+                    <button 
+                        id="addTaskBtn"
+                        class="w-full btn-primary font-semibold py-3 px-6 rounded-lg relative z-10"
+                    >
+                        Plant New Task
+                    </button>
+                </div>
+
+                <!-- Filter and Delete All Buttons -->
+                <div class="flex justify-between items-center mb-6">
+                    <div class="flex gap-2">
+                        <button class="filter-btn active px-4 py-2 rounded-lg glass-dark text-primary text-sm transition-all duration-200 relative z-10" data-filter="all">All</button>
+                        <button class="filter-btn px-4 py-2 rounded-lg glass-dark text-primary text-sm transition-all duration-200 relative z-10" data-filter="active">Active</button>
+                        <button class="filter-btn px-4 py-2 rounded-lg glass-dark text-primary text-sm transition-all duration-200 relative z-10" data-filter="completed">Completed</button>
+                    </div>
+                    <button 
+                        id="deleteAllBtn"
+                        class="btn-danger px-4 py-2 rounded-lg text-sm font-semibold relative z-10"
+                    >
+                        Delete All
+                    </button>
+                </div>
+
+                <!-- Task List -->
+                <div id="taskList" class="space-y-3 max-h-96 overflow-y-auto">
+                    <!-- Tasks will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
